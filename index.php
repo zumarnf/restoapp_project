@@ -12,28 +12,35 @@ $select_meja = $db->query($select_meja_query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
     <title>
         <?= APP_NAME ?>
     </title>
 </head>
 
 <body>
-    <h1>
+    <h1 align="center">
         DAFTAR MEJA
     </h1>
-    <?php
-    foreach ($select_meja as $meja) {
+    <div class="container">
+
+        <?php
+        foreach ($select_meja as $meja) {
+            ?>
+            <div class="cards">
+                <p>
+                    <?= $meja['tipe_meja'] . " " . $meja['no_meja'] ?>
+                </p>
+                <p>
+
+                    <?= $meja['nama_pelanggan'] == NULL && $meja['jum_orang'] == NULL ? "meja kosong" : $meja['nama_pelanggan'] . " " . $meja['jum_orang'] . " " . "orang" ?>
 
 
-        ?>
-        <p>
-            <?= $meja['tipe_meja'] . " " . $meja['no_meja']; ?>
-        </p>
-        <p>
-            <?= $meja['nama_pelanggan'] . " " . $meja['jum_orang']; ?>
-        </p>
+                </p>
+            </div>
 
-    <?php } ?>
+        <?php } ?>
+    </div>
 </body>
 
 </html>
