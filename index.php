@@ -1,5 +1,6 @@
 <?php
-$my_app_name = "Bro Resto";
+require_once "services/database.php";
+define("APP_NAME", "BroResto - Website Penerima Tamu");
 ?>
 
 <!DOCTYPE html>
@@ -9,12 +10,14 @@ $my_app_name = "Bro Resto";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $my_app_name ?>
+        <?= APP_NAME ?>
     </title>
 </head>
 
 <body>
-
+    <h1>
+        halaman
+    </h1>
 </body>
 
 </html>
