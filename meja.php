@@ -1,10 +1,17 @@
-<?php
-define("APP_NAME", "MEJA");
+<?php 
+    session_start();
 
-$no_meja = "";
-if (isset($_GET["no_meja"]) && $_GET['no_meja'] !== "") {
-    $no_meja = $_GET['no_meja'];
-}
+    if($_SESSION['is_login'] == false) {
+        header("location: login.php");
+    }
+
+    define("APP_NAME","NOMOR MEJA ");
+
+    $no_meja = "";
+
+    if(isset($_GET['no_meja']) && $_GET['no_meja'] !== "") {
+        $no_meja = $_GET['no_meja'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,15 +26,12 @@ if (isset($_GET["no_meja"]) && $_GET['no_meja'] !== "") {
 
 <body>
     <div class="super-center">
-        <h1>
-            <?= APP_NAME;
-            echo $no_meja ?>
-        </h1>
+        <h1><?= APP_NAME; echo $no_meja ?></h1>
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
             <label>Nama Pelanggan</label>
             <input name="nama_pelanggan" />
             <label>Jumlah Orang</label>
-            <input name="jumlah_orang" />
+            <input name="jum_orang" />
             <button type="submit" name="update">Update Meja</button>
         </form>
     </div>
