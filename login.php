@@ -1,6 +1,12 @@
 <?php
 require_once("services/database.php");
+
+session_start();
 $login_notification = "";
+
+if (isset($_SESSION['is_login'])) {
+    header("location: index.php");
+}
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -11,7 +17,12 @@ if (isset($_POST['login'])) {
     $select_admin = $db->query($select_admin_query);
 
     if ($select_admin->num_rows > 0) {
-        echo "ada datanya ";
+        $admin = $select_admin->fetch_assoc();
+        $_SESSION['is_login'] = true;
+        $_SESSION['is_login'] = $admin['username'];
+
+        header("location: index.php");
+
     } else {
         $login_notification = "akun admin tidak ada";
     }
