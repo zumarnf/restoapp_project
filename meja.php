@@ -1,17 +1,34 @@
-<?php 
-    session_start();
+<?php
+require_once("services/database.php");
+session_start();
 
-    if($_SESSION['is_login'] == false) {
-        header("location: login.php");
+if ($_SESSION['is_login'] == false) {
+    header("location: login.php");
+}
+
+define("APP_NAME", "NOMOR MEJA ");
+
+$no_meja = "";
+$update_notification = "";
+
+if (isset($_GET['no_meja']) && $_GET['no_meja'] !== "") {
+    $no_meja = $_GET['no_meja'];
+}
+
+if (isset($_POST['update'])) {
+    $nama_pelanggan = $_POST['nama_pelanggan'];
+    $jum_orang = $_POST['jum_orang'];
+
+    $update_meja_query = "UPDATE meja SET nama_pelanggan='$nama_pelanggan', jum_orang='$jum_orang' WHERE no_meja='$no_meja'";
+
+    $update_meja = $db->query($update_meja_query);
+
+    if ($update_meja) {
+        header("location: index.php");
+    } else {
+        $update_notification = "gagal update data meja, silahkan coba lagi";
     }
-
-    define("APP_NAME","NOMOR MEJA ");
-
-    $no_meja = "";
-
-    if(isset($_GET['no_meja']) && $_GET['no_meja'] !== "") {
-        $no_meja = $_GET['no_meja'];
-    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +43,13 @@
 
 <body>
     <div class="super-center">
-        <h1><?= APP_NAME; echo $no_meja ?></h1>
+        <h1>
+            <?= APP_NAME;
+            echo $no_meja ?>
+        </h1>
+        <i>
+            <?= $update_notification ?>
+        </i>
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
             <label>Nama Pelanggan</label>
             <input name="nama_pelanggan" />
