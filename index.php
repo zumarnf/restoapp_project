@@ -27,20 +27,25 @@ $select_meja = $db->query($select_meja_query);
         <?php
         foreach ($select_meja as $meja) {
             ?>
-            <div class="cards">
-                <p>
+            <div class="cards" onclick="goToMeja(`<?= $meja['no_meja'] ?>`, `<?= $meja['nama_pelanggan'] ?>`)">
+                <b>
                     <?= $meja['tipe_meja'] . " " . $meja['no_meja'] ?>
-                </p>
+                </b>
                 <p>
-
-                    <?= $meja['nama_pelanggan'] == NULL && $meja['jum_orang'] == NULL ? "meja kosong" : $meja['nama_pelanggan'] . " " . $meja['jum_orang'] . " " . "orang" ?>
-
-
+                    <?= $meja['nama_pelanggan'] == NULL && $meja['jum_orang'] == NULL ? "meja kosong" : $meja['nama_pelanggan'] . " " . $meja['jum_orang'] . " orang" ?>
                 </p>
             </div>
 
         <?php } ?>
     </div>
+    <script>
+        function goToMeja(no_meja, nama_pelanggan) {
+            const url = "meja.php";
+            const params = `?no_meja = ${no_meja}& nama_pelanggan=${nama_pelanggan}`
+
+            window.location.replace(url + params);
+        }
+    </script>
 </body>
 
 </html>
