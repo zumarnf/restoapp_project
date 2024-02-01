@@ -35,16 +35,14 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <title>Document</title>
 </head>
 
 <body>
     <div class="super-center">
         <h1>LOGIN ADMIN</h1>
-        <i>
-            <?= $login_notification ?>
-        </i>
+        <i><?= $login_notification ?></i>
 
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
             <label>username</label>

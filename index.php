@@ -25,7 +25,8 @@ $select_meja = $db->query($select_meja_query);
 </head>
 
 <body>
-    <a href="logout.php">logout</a>
+    <?php include("layouts/header.php") ?>
+
     <h1 align="center">DAFTAR MEJA</h1>
 
     <div class="container">
