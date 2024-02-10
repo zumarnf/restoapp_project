@@ -42,6 +42,7 @@ if (isset($_POST['update'])) {
 </head>
 
 <body>
+    <?php include("layouts/header.php"); ?>
     <div class="super-center">
         <h1>
             <?= APP_NAME;

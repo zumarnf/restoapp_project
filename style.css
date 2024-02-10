@@ -5,6 +5,24 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  font-family: Helvetica;
+}
+
+header {
+  display: flex;
+  background-color: burlywood;
+  width: 100%;
+  justify-content: space-between;
+  padding: 8px 24px;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
 
 .container {
   display: flex;

@@ -27,6 +27,8 @@ $select_meja = $db->query($select_meja_query);
 <body>
     <?php include("layouts/header.php") ?>
 
+    <br />
+
     <h1 align="center">DAFTAR MEJA</h1>
 
     <div class="container">

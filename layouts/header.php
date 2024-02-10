@@ -1,8 +1,8 @@
 <header>
     <div>
-        <h3>
+        <a href="index.php">
             Bro Resto
-        </h3>
+        </a>
     </div>
     <div>
         <?php
