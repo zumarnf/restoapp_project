@@ -9,10 +9,16 @@ if ($_SESSION['is_login'] == false) {
 define("APP_NAME", "NOMOR MEJA ");
 
 $no_meja = "";
+$nama_pelanggan = "";
 $update_notification = "";
 
 if (isset($_GET['no_meja']) && $_GET['no_meja'] !== "") {
     $no_meja = $_GET['no_meja'];
+}
+
+if (isset($_GET['nama_pelanggan']) && $_GET['nama_pelanggan'] !== "") {
+    $nama_pelanggan = $_GET['nama_pelanggan'];
+    header("location: finish_order.php?no_meja=$no_meja&nama_pelanggan=$nama_pelanggan");
 }
 
 if (isset($_POST['update'])) {
