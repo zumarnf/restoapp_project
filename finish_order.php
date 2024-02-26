@@ -17,15 +17,23 @@ if (isset($_GET['nama_pelanggan']) && $_GET['nama_pelanggan']) {
 }
 
 if (isset($_POST['finish_order'])) {
+    $hari = date('Y-m-d');
+    $jam = date('H:i:s');
+
     $clear_meja_query = "UPDATE meja SET nama_pelanggan = NULL, jum_orang = NULL 
     WHERE no_meja = '$no_meja'";
 
+    $insert_history_query = "INSERT INTO history (`no_meja`, `nama_pelanggan`, `hari`, `jam`) VALUES('$no_meja', '$nama_pelanggan', '$hari', '$jam')";
+
     $clear_meja = $db->query($clear_meja_query);
-    if ($clear_meja) {
-        echo "meja berhasil dikosongkan";
+    $insert_history = $db->query($insert_history_query);
+
+    if ($clear_meja && $insert_history) {
+        header("location: index.php");
     } else {
         echo "gagal";
     }
+    $db->close();
 
 }
 
